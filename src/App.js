@@ -1,8 +1,9 @@
 import axios from "axios";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Card from "./components/Card";
+import Card from "./components/Card/Card.js";
 import Home from "./Display/Home.js";
+import Header from './components/Header/Header.js';
 //import data from "./data/test.json";
 
 function App() {
@@ -29,9 +30,13 @@ function App() {
         //console.log(dataArr);
       }
     });
-  }, []);
+  },[]);
 
-  console.log(data);
+  console.log(dataArr);
+
+  const handleChampionSelect = (champion) => {
+    setSelectedChampion(champion);
+  }
   //data.splice(0, 166);
 
   //console.log(dataArr[0].image.full);
@@ -39,10 +44,12 @@ function App() {
 
   return (
     <BrowserRouter className="App">
+      <Header />
       <Routes>
         <Route
           path="/"
-          element={<Home championContent={championContent} data={data} />}
+          element={<Home championContent={championContent} data={data} 
+            handleChampionSelect = {handleChampionSelect} />}
         />
         <Route
           path="/:champId"

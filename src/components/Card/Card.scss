@@ -1,0 +1,39 @@
+.card__container{
+    width: 25%;
+    margin:2px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 50%; 
+    position: relative;
+    z-index: 0;
+    transition: .3s;
+    cursor: pointer;
+    &--title{
+        color:rgb(243, 235, 235);
+    }
+    &--info{
+        color:rgb(243, 235, 235);
+    }
+
+}
+.card__container:after {
+    content: "";
+    position: absolute;
+    inset: -100px;
+    background:
+      radial-gradient(200px at left  400px top 150px,#ff53bb 100%,#0000),
+      radial-gradient(200px at right 400px bottom 150px,#00f8d3 100%,#0000);
+    filter: blur(120px);
+    opacity: .5;
+  }
+  .card__container:hover:before, 
+  .card__container:hover:after{
+    transform: rotate(36000deg);
+  transition: .5s,600s linear transform;
+  }
+
+  
+    

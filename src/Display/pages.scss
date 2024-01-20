@@ -1,0 +1,12 @@
+.ChampContainer{
+    background-color: black;
+
+    &__Cards-champion{
+    background-color: rgb(14, 12, 12);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    }
+}
