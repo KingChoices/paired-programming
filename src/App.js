@@ -1,45 +1,55 @@
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import axios from 'axios';
-//import './App.scss';
-import { useState, useEffect } from 'react';
+import axios from "axios";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Card from "./components/Card";
+import Home from "./Display/Home.js";
+//import data from "./data/test.json";
 
 function App() {
-  // const url="https://ddragon.leagueoflegends.com/cdn/14.1.1/data/en_US/champion.json";
-  const url = "http://localhost:2024/champions";
-  const [ChampionContent,setChampionContent]=useState(null);
-  const [selectedChampion,setSelectedChampion]=useState(null);
-  let arr=[];
-  useEffect (() => {
-    axios.get(url).then((res)=> {
-      console.log(res.data.data);
+  const [data, setData] = useState([]);
+  const [championContent, setChampionContent] = useState();
+  const [selectedChampion, setSelectedChampion] = useState();
 
-      const obj = res.data.data;
-      for ( const prop in obj){
-        console.log(obj[prop]);
-        arr.push(obj[prop]);
+  const url =
+    "https://ddragon.leagueoflegends.com/cdn/14.1.1/data/en_US/champion.json";
+
+  const dataArr = [];
+
+  useEffect(() => {
+    //fetch data from url
+    axios.get(url).then((res) => {
+      //logging data in console
+      //console.log(res.data.data);
+      //re-arranging data
+      const objects = res.data.data;
+      for (const prop in objects) {
+        //console.log(objects[prop]);
+        dataArr.push(objects[prop]);
+        setData(dataArr);
+        //console.log(dataArr);
       }
-      console.log(arr[0].image.full);
-
-
-
-
-      // arr= res.data.forEach(element => {
-      //   console.log(element);
-      //   arr.push(element);
-      // });
-      // console.log(arr);
-
-      setChampionContent(res);
-      //setSelectedChampion(res.data.data[0].id);
-    })
-    .catch((error) => {
-      console.log(error);
     });
-  },[]);
+  }, []);
+
+  console.log(data);
+  //data.splice(0, 166);
+
+  //console.log(dataArr[0].image.full);
+  //console.log(dataArr);
+
   return (
-<h1> league of legends</h1>
-
-
+    <BrowserRouter className="App">
+      <Routes>
+        <Route
+          path="/"
+          element={<Home championContent={championContent} data={data} />}
+        />
+        <Route
+          path="/:champId"
+          element={<Home championContent={championContent} data={data} />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
