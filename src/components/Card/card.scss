@@ -1,0 +1,41 @@
+.card__container {
+    border-radius: 4px;
+    background-color: rgba($color: #1e2c22, $alpha: 0.5);
+    text-decoration: none;
+    z-index: 2;
+}
+.card__container--grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-image: url("https://gamequitters.com/wp-content/uploads/LOL_CMS_152_Article_01_dsnpbw97lpr2tcdw6cjm-1024x576.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.card__container--image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+    img {
+        width: 128px;
+        height: 128px;
+    }
+}
+
+.card__container--title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card__container--info {
+     display: block;
+
+     p {
+        text-decoration: none;
+        color: rgb(222, 145, 12);
+     }
+}

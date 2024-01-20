@@ -1,7 +1,8 @@
 import React from "react";
-import Card from "../components/Card";
+import Card from "../components/Card/Card";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
+import ChampDetails from "../components/ChampDetails/ChampDetails";
 
 const Home = ({ data, championContent }) => {
   const { champId } = useParams();
@@ -13,12 +14,12 @@ const Home = ({ data, championContent }) => {
       console.log("No video id found.");
     }
   }, [champId]);
-
+  console.log(championContent, data);
   return (
     <>
       <section className="content__section">
         <div className='"content__container'>
-          <p>here</p>
+          <ChampDetails name={championContent} />
         </div>
       </section>
       <section className="champ__section">
